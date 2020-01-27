@@ -448,9 +448,9 @@ if [[ $temp -gt $tempwarn ]];then
     fi
 fi
 
-perfdata=";| Temp=$temp;$tempwarn;$tempcrit;0 Line_Voltage=$involtsdata;$inhigh;;$inlow Load=$load;$loadwarn;$loadcrit;0 RunTime=$runtime;$runwarn;$runcrit;0"
-[[ $diagdata == "no" ]] || perfdata="$perfdata Diagnostic=${diagdays:-0};$diagwarn;$diagcrit;0"
-[[ $calibdata == "no" ]] || perfdata="$perfdata Calibration=${calibdays:-0};$calibwarn;$calibcrit;0"
+perfdata=";| Temp=$temp;$tempwarn;$tempcrit;0; Line_Voltage=$involtsdata;$inhigh;;$inlow; Load=$load;$loadwarn;$loadcrit;0; RunTime=$runtime;$runwarn;$runcrit;0;"
+[[ $diagdata == "no" ]] || perfdata="$perfdata Diagnostic=${diagdays:-0};$diagwarn;$diagcrit;0;"
+[[ $calibdata == "no" ]] || perfdata="$perfdata Calibration=${calibdays:-0};$calibwarn;$calibcrit;0;"
 [[ -z $exitstring ]] && exitstring="OK"
 exitstring="host: $upshostname: $upsvendorPrettyName ${upsmodel:-(Unknown Model)}: $exitstring$perfdata"
 case $exitstatus in
